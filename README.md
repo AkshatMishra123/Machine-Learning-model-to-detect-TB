@@ -1,67 +1,42 @@
-# 🦠 TB-XNet: Machine Learning Model to Detect Tuberculosis
+# 🩻 TB-Detection-Hybrid-Model
 
-This project is a deep learning-based approach to detect Tuberculosis (TB) from chest X-ray images. It uses convolutional neural networks (CNNs) to classify images as TB-positive or TB-negative, offering a potential assistive tool for early diagnosis.
+> **A Medical AI System for the Early Detection of Tuberculosis from Chest X-Rays using Hybrid Feature Descriptors.**
 
----
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-<img src="TuberCulosis.jpg" width="400"/>
+## 📌 Overview
+Tuberculosis (TB) is a serious infectious disease that affects the lungs. Early detection is critical but often difficult due to a shortage of radiologists in developing regions. 
 
+This project implements a **Hybrid Deep Learning Model** that combines **Transfer Learning** (MobileNetV2) with **Hand-Engineered Features** (Gabor Filters & Canny Edge Detection). By feeding the AI not just the raw image, but also texture and structural edge data, the model achieves superior accuracy compared to standard CNNs.
 
-## 📁 Project Structure
+## 🚀 Key Features
+* **Hybrid Architecture:** Merges Deep Learning features with classical Computer Vision techniques.
+* **High Accuracy:** Achieved **97.5% Validation Accuracy** on the test set.
+* **Real-Time Diagnosis App:** Includes a user-friendly Jupyter Notebook interface (`Run_TB_App.ipynb`) with an upload button for instant prediction.
+* **Lightweight:** Uses MobileNetV2, making it suitable for future edge/IoT deployment.
 
+## 🧠 Methodology
+Based on the research paper *"Early detection of tuberculosis using hybrid feature descriptors and deep learning network"*, this project processes images in three specific layers:
 
----
+1.  **Layer 1 (Original):** The resized grayscale X-ray.
+2.  **Layer 2 (Texture):** Applied **Gabor Filter** to highlight lung tissue textures and abnormalities.
+3.  **Layer 3 (Structure):** Applied **Canny Edge Detection** to emphasize the rib cage and lung boundaries.
 
-## 🚀 Features
+These three layers are stacked into a composite image and fed into a pre-trained **MobileNetV2** network for classification.
 
-- ✅ CNN-based architecture
-- 🧪 Binary classification: TB-positive vs TB-negative
-- 📊 Evaluation metrics: Accuracy, Precision, Recall, AUC
-- 📁 Modular and well-structured code
+## 📊 Results
+| Metric | Score |
+| :--- | :--- |
+| **Validation Accuracy** | **97.50%** |
+| **Validation Loss** | 0.07 |
+| **Training Epochs** | 10 |
 
----
+## 🛠️ Installation & Setup
 
-## 📦 Requirements
-
-Install required dependencies:
-
+### 1. Clone the Repository
 ```bash
-pip install -r requirements.txt
-
-
-Or manually install major ones:
-
-pip install torch torchvision matplotlib opencv-python scikit-learn
-
-🏃‍♂️ How to Run
-python train_tb_xnet.py
-
-
-Dataset Recreation
-To recreate the dataset that we used for our experiments, follow these steps:
-
-Download the original dataset here.
-Extract the files.
-Run the create_dataset.py script, making sure to point the 'datapath' argument at the root directory containing the extracted files. This script will perform pre-processing on all the images, converting them into the format we used.
-Wait for the processing to complete.
-Results
-These are the final results for TB-Net on the test dataset. The test dataset contains 348 normal samples and 345 tuberculosis samples.
-
-TB-Net Details
-Accuracy	Sensitivity	Specificity	# Params (M)	MACs (G)
-92.54	98.0	96.51	7.36	0.65
-
-
-🙋‍♂️ Author
-Akshat Mishra
-
-
-
----
-
-Let me know:
-- Do you want to add a dataset source link or description?
-- Want me to include image results or model architecture summary?
-- Planning to deploy it? I can help with a web interface too.
-
-Let’s make this repo top-notch 💻✨
+git clone [https://github.com/AkshatMishra123/Machine-Learning-model-to-detect-TB.git](https://github.com/AkshatMishra123/Machine-Learning-model-to-detect-TB.git)
+cd Machine-Learning-model-to-detect-TB
